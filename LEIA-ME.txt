@@ -1,0 +1,20 @@
+SISTEMA DE TRIAGEM MÉDICA RP — ARQUIVOS SEPARADOS
+===================================================
+
+Arquivos:
+- triagem_medica_rp.py : servidor local Python
+- index.html            : estrutura da página
+- style.css             : estilos e layout visual
+- script.js             : navegação, sintomas, resumo e exportação
+
+Como executar:
+1. Mantenha os quatro arquivos na mesma pasta.
+2. Instale Python 3, se ainda não estiver instalado.
+3. Abra a pasta no Explorador de Arquivos.
+4. Digite cmd na barra de endereço e pressione Enter.
+5. Execute: python triagem_medica_rp.py
+6. O navegador abrirá em http://127.0.0.1:8000
+7. Para encerrar, volte ao terminal e pressione Ctrl+C.
+
+Não é necessário instalar bibliotecas extras.
+Uso exclusivo para simulação de roleplay; não é prontuário clínico real.

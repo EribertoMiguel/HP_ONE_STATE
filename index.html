@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital Santa Helena | Triagem RP</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="header-inner"><div class="logo">✚</div><div><h1>Hospital Santa Helena</h1><p>Sistema de triagem médica · Simulação de Roleplay (RP)</p></div></div></header>
+<main>
+  <div class="notice"><strong>Uso exclusivo para RP:</strong> esta ferramenta é uma simulação educacional. Não é prontuário clínico, não realiza diagnóstico e não substitui avaliação profissional ou protocolos de emergência.</div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-title">Etapas da triagem</div>
+      <div class="step-list" id="stepList"></div>
+      <div style="border-top:1px solid var(--line);margin-top:15px;padding-top:14px">
+        <div class="side-title" style="margin-left:0">Atendimento</div>
+        <div style="font-size:13px;color:var(--muted)">Ficha nº <strong id="caseNumber">RP-0001</strong></div>
+        <div style="font-size:13px;color:var(--muted);margin-top:5px">Data/hora <strong id="now"></strong></div>
+      </div>
+    </aside>
+    <section class="panel">
+      <div class="panel-head"><div><div class="eyebrow" id="eyebrow">Etapa 1</div><h2 id="stepTitle">Identificação</h2><p class="sub" id="stepSub">Dados básicos do paciente.</p></div><span class="counter" id="counter">1 de 7</span></div>
+      <form id="triageForm">
+        <section class="page" data-page="0">
+          <div class="grid">
+            <div class="field full"><label for="nome">Nome completo *</label><input id="nome" name="nome" value="Roberto Almeida" required></div>
+            <div class="field"><label for="idade">Idade *</label><input id="idade" name="idade" type="number" min="0" max="120" value="46" required></div>
+            <div class="field"><label for="sexo">Sexo informado</label><select id="sexo" name="sexo"><option>Masculino</option><option>Feminino</option><option>Não informado</option><option>Outro</option></select></div>
+            <div class="field"><label for="unidade">Local de atendimento</label><input id="unidade" name="unidade" value="Consultório 03"></div>
+            <div class="field"><label for="profissional">Profissional no RP</label><input id="profissional" name="profissional" value="Médica clínica geral"></div>
+          </div>
+        </section>
+
+        <section class="page hidden" data-page="1">
+          <div class="field"><label for="queixa">Queixa principal *</label><textarea id="queixa" name="queixa" required>Dor de cabeça e tontura ao levantar</textarea></div>
+          <div class="grid">
+            <div class="field"><label for="inicioSintomas">Quando começaram os sintomas?</label><input id="inicioSintomas" name="inicioSintomas" value="Desde ontem"></div>
+            <div class="field"><label for="localDor">Local da dor</label><input id="localDor" name="localDor" value="Cabeça"></div>
+            <div class="field"><label for="intensidade">Intensidade da dor</label><select id="intensidade" name="intensidade"><option>Não avaliada</option><option selected>Leve</option><option>Moderada</option><option>Intensa</option><option>Súbita e muito intensa</option><option>Sem dor</option></select></div>
+            <div class="field"><label for="inicioDor">Início da dor</label><select id="inicioDor" name="inicioDor"><option>Não esclarecido</option><option selected>Gradual</option><option>Súbito</option><option>Não se aplica</option></select></div>
+          </div>
+          <div class="field"><label>Catálogo de sintomas — selecione todos os que se aplicam</label><p class="hint">Você pode selecionar vários sintomas em diferentes categorias. Marque “Nenhum informado” somente se nenhum sintoma adicional foi relatado.</p></div>
+          <div id="symptomCatalog"></div>
+          <div class="field"><label for="outrosSintomas">Outros sintomas / descrição livre</label><textarea id="outrosSintomas" name="outrosSintomas" placeholder="Descreva sintomas não listados, frequência, duração ou evolução..."></textarea></div>
+        </section>
+
+        <section class="page hidden" data-page="2">
+          <div class="grid">
+            <div class="field"><label for="consciencia">Estado de consciência</label><select id="consciencia" name="consciencia"><option>Não avaliado</option><option selected>Consciente e orientado</option><option>Confuso</option><option>Sonolento</option><option>Inconsciente</option></select></div>
+            <div class="field"><label for="respiracao">Padrão respiratório</label><select id="respiracao" name="respiracao"><option>Não avaliado</option><option selected>Normal</option><option>Dificuldade respiratória</option><option>Anormal</option></select></div>
+            <div class="field full"><label for="neurologico">Avaliação neurológica inicial</label><select id="neurologico" name="neurologico"><option>Ainda não avaliado</option><option selected>Sem alterações aparentes na avaliação realizada</option><option>Alterações identificadas</option><option>Avaliação inconclusiva</option></select></div>
+            <div class="field full"><label for="exameFisico">Achados do exame físico</label><textarea id="exameFisico" name="exameFisico" placeholder="Registrar apenas os achados efetivamente observados..."></textarea></div>
+          </div>
+          <div class="notice" style="margin-top:5px;margin-bottom:0">Uma avaliação inicial sem alterações aparentes não exclui todas as condições graves. Registre apenas o que foi realmente avaliado.</div>
+        </section>
+
+        <section class="page hidden" data-page="3">
+          <div class="grid">
+            <div class="field"><label for="pa">Pressão arterial (mmHg)</label><input id="pa" name="pa" value="168/102" placeholder="Ex.: 120/80"></div>
+            <div class="field"><label for="fc">Frequência cardíaca (bpm)</label><input id="fc" name="fc" type="number" min="0" value="96"></div>
+            <div class="field"><label for="fr">Frequência respiratória (irpm)</label><input id="fr" name="fr" type="number" min="0" value="18"></div>
+            <div class="field"><label for="temperatura">Temperatura (°C)</label><input id="temperatura" name="temperatura" value="36,7"></div>
+            <div class="field"><label for="spo2">Saturação de oxigênio (%)</label><input id="spo2" name="spo2" type="number" min="0" max="100" value="98"></div>
+            <div class="field"><label for="glicemia">Glicemia (mg/dL)</label><input id="glicemia" name="glicemia" value="Não aferida"></div>
+          </div>
+          <div class="hint">Valores pré-preenchidos são dados fictícios do cenário RP. Confirme ou edite antes de gerar a ficha.</div>
+        </section>
+
+        <section class="page hidden" data-page="4">
+          <div class="field"><label for="historico">Doenças e antecedentes médicos</label><textarea id="historico" name="historico">A investigar</textarea></div>
+          <div class="field"><label for="medicamentos">Medicamentos em uso</label><textarea id="medicamentos" name="medicamentos">A investigar</textarea></div>
+          <div class="field"><label for="alergias">Alergias conhecidas</label><textarea id="alergias" name="alergias">A investigar</textarea></div>
+          <div class="field"><label for="antecedentes">Outras informações relevantes</label><textarea id="antecedentes" name="antecedentes" placeholder="Cirurgias, histórico familiar, episódios anteriores, contexto dos sintomas..."></textarea></div>
+        </section>
+
+        <section class="page hidden" data-page="5">
+          <div class="field"><label for="prioridade">Prioridade registrada no RP</label><select id="prioridade" name="prioridade"><option>A definir após avaliação</option><option>Emergência imediata</option><option selected>Urgente</option><option>Prioridade intermediária</option></select></div>
+          <div class="field"><label for="conduta">Conduta inicial registrada</label><select id="conduta" name="conduta"><option selected>Avaliação clínica imediata</option><option>Encaminhamento à emergência</option><option>Completar avaliação antes de definir</option><option>Outra conduta</option></select></div>
+          <div class="field"><label for="observacoes">Observações médicas</label><textarea id="observacoes" name="observacoes" placeholder="Registre a justificativa da conduta, sinais de alerta e pendências..."></textarea></div>
+          <div class="notice">A pressão arterial de 168/102 mmHg está elevada. Associada a cefaleia e tontura, requer avaliação clínica imediata. Não use este formulário para determinar tratamento real; siga os protocolos profissionais aplicáveis.</div>
+        </section>
+
+        <section class="page hidden" data-page="6">
+          <div id="finalSummary"></div>
+          <div class="actions screen-only" style="border-top:0;padding-top:10px">
+            <button type="button" class="btn primary" id="downloadTxt">Baixar ficha (.txt)</button>
+            <button type="button" class="btn secondary" id="downloadJson">Baixar dados (.json)</button>
+            <button type="button" class="btn outline" onclick="window.print()">Imprimir / salvar PDF</button>
+          </div>
+        </section>
+      </form>
+      <div class="actions screen-only" id="navActions">
+        <button type="button" class="btn outline" id="resetBtn">Nova ficha em branco</button>
+        <div style="display:flex;gap:9px;margin-left:auto">
+          <button type="button" class="btn secondary" id="prevBtn" disabled>← Anterior</button>
+          <button type="button" class="btn primary" id="nextBtn">Próxima etapa →</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="footer-note">Sistema demonstrativo de RP · Os dados ficam no navegador e só são exportados quando você solicita.</div>
+</main>
+<script src="/script.js" defer></script>
+</body>
+</html>
