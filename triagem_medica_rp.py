@@ -21,7 +21,7 @@ def main():
     server = ThreadingHTTPServer((HOST, PORT), AppHandler)
     url = f"http://{HOST}:{PORT}/"
     print("=" * 56)
-    print("HOSPITAL SANTA HELENA — TRIAGEM MÉDICA RP")
+    print("HP DE FORTUNA — TRIAGEM MÉDICA RP")
     print(f"Aplicação aberta em: {url}")
     print("Para encerrar, pressione Ctrl+C nesta janela.")
     print("=" * 56)
