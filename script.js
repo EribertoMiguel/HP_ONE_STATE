@@ -4,7 +4,7 @@ const steps = [
  ["Avaliação clínica","Documente o estado geral e os achados observados."],
  ["Sinais vitais","Informe as medidas aferidas no cenário."],
  ["Histórico médico","Antecedentes, medicamentos e alergias."],
- ["Classificação e conduta","Registre a prioridade e a decisão médica do RP."],
+ ["Gravidade e especialidades","Consulte a legenda de gravidade e a lista de especialidades."],
  ["Ficha final","Revise, baixe ou imprima a ficha."]
 ];
 const catalog = {
@@ -88,9 +88,9 @@ function buildSummary(){
   ["Avaliação clínica",["consciencia","respiracao","neurologico","exameFisico"]],
   ["Sinais vitais",["pa","fc","fr","temperatura","spo2","glicemia"]],
   ["Histórico médico",["historico","medicamentos","alergias","antecedentes"]],
-  ["Classificação e conduta",["prioridade","conduta","observacoes"]]
+  ["Gravidade e especialidades",["prioridade","observacoes"]]
  ];
- const labels={nome:"Paciente",idade:"Idade",sexo:"Sexo",unidade:"Local",profissional:"Profissional RP",queixa:"Queixa principal",inicioSintomas:"Início dos sintomas",localDor:"Local da dor",intensidade:"Intensidade",inicioDor:"Início da dor",outrosSintomas:"Outros sintomas",consciencia:"Consciência",respiracao:"Respiração",neurologico:"Avaliação neurológica",exameFisico:"Exame físico",pa:"Pressão arterial",fc:"Frequência cardíaca",fr:"Frequência respiratória",temperatura:"Temperatura",spo2:"Saturação O₂",glicemia:"Glicemia",historico:"Antecedentes",medicamentos:"Medicamentos",alergias:"Alergias",antecedentes:"Outras informações",prioridade:"Prioridade RP",conduta:"Conduta",observacoes:"Observações"};
+ const labels={nome:"Paciente",idade:"Idade",sexo:"Sexo",unidade:"Local",profissional:"Profissional RP",queixa:"Queixa principal",inicioSintomas:"Início dos sintomas",localDor:"Local da dor",intensidade:"Intensidade",inicioDor:"Início da dor",outrosSintomas:"Outros sintomas",consciencia:"Consciência",respiracao:"Respiração",neurologico:"Avaliação neurológica",exameFisico:"Exame físico",pa:"Pressão arterial",fc:"Frequência cardíaca",fr:"Frequência respiratória",temperatura:"Temperatura",spo2:"Saturação O₂",glicemia:"Glicemia",historico:"Antecedentes",medicamentos:"Medicamentos",alergias:"Alergias",antecedentes:"Outras informações",prioridade:"Prioridade RP",observacoes:"Observações"};
  let html=`<div class="summary-grid">`;
  groups.forEach(([title,keys])=>{
   html+=`<div class="summary-card"><h3>${title}</h3>`;
@@ -103,7 +103,7 @@ function buildSummary(){
 }
 function escapeHtml(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
 function reportText(d){
- return `HP DE FORTUNA\nFICHA DE TRIAGEM MÉDICA — RP\nFicha: ${d.numeroFicha}\nData/hora de criação: ${new Date().toLocaleString("pt-BR")}\n${"=".repeat(48)}\n\nIDENTIFICAÇÃO\nPaciente: ${d.nome}\nIdade: ${d.idade}\nSexo: ${d.sexo}\nLocal: ${d.unidade}\nProfissional no RP: ${d.profissional}\n\nQUEIXA E SINTOMAS\nQueixa: ${d.queixa}\nInício: ${d.inicioSintomas}\nLocal da dor: ${d.localDor}\nIntensidade: ${d.intensidade}\nInício da dor: ${d.inicioDor}\nSintomas selecionados: ${d.sintomasSelecionados.join(", ")||"Não informados"}\nOutros sintomas: ${d.outrosSintomas}\n\nAVALIAÇÃO CLÍNICA\nConsciência: ${d.consciencia}\nRespiração: ${d.respiracao}\nAvaliação neurológica: ${d.neurologico}\nExame físico: ${d.exameFisico}\n\nSINAIS VITAIS\nPressão arterial: ${d.pa} mmHg\nFrequência cardíaca: ${d.fc} bpm\nFrequência respiratória: ${d.fr} irpm\nTemperatura: ${d.temperatura} °C\nSaturação O2: ${d.spo2}%\nGlicemia: ${d.glicemia}\n\nHISTÓRICO MÉDICO\nAntecedentes: ${d.historico}\nMedicamentos: ${d.medicamentos}\nAlergias: ${d.alergias}\nOutras informações: ${d.antecedentes}\n\nCLASSIFICAÇÃO E CONDUTA\nPrioridade registrada no RP: ${d.prioridade}\nConduta: ${d.conduta}\nObservações: ${d.observacoes}\n\nPENDÊNCIAS\nCampos vazios ou marcados como “a investigar”, “não avaliado” ou “não aferida” precisam ser confirmados.\n\nAVISO: simulação de roleplay. Não é prontuário clínico real e não substitui avaliação profissional.\n`;
+ return `HP DE FORTUNA\nFICHA DE TRIAGEM MÉDICA — RP\nFicha: ${d.numeroFicha}\nData/hora de criação: ${new Date().toLocaleString("pt-BR")}\n${"=".repeat(48)}\n\nIDENTIFICAÇÃO\nPaciente: ${d.nome}\nIdade: ${d.idade}\nSexo: ${d.sexo}\nLocal: ${d.unidade}\nProfissional no RP: ${d.profissional}\n\nQUEIXA E SINTOMAS\nQueixa: ${d.queixa}\nInício: ${d.inicioSintomas}\nLocal da dor: ${d.localDor}\nIntensidade: ${d.intensidade}\nInício da dor: ${d.inicioDor}\nSintomas selecionados: ${d.sintomasSelecionados.join(", ")||"Não informados"}\nOutros sintomas: ${d.outrosSintomas}\n\nAVALIAÇÃO CLÍNICA\nConsciência: ${d.consciencia}\nRespiração: ${d.respiracao}\nAvaliação neurológica: ${d.neurologico}\nExame físico: ${d.exameFisico}\n\nSINAIS VITAIS\nPressão arterial: ${d.pa} mmHg\nFrequência cardíaca: ${d.fc} bpm\nFrequência respiratória: ${d.fr} irpm\nTemperatura: ${d.temperatura} °C\nSaturação O2: ${d.spo2}%\nGlicemia: ${d.glicemia}\n\nHISTÓRICO MÉDICO\nAntecedentes: ${d.historico}\nMedicamentos: ${d.medicamentos}\nAlergias: ${d.alergias}\nOutras informações: ${d.antecedentes}\n\nGRAVIDADE E ESPECIALIDADES\nPrioridade registrada no RP: ${d.prioridade}\nObservações: ${d.observacoes}\n\nPENDÊNCIAS\nCampos vazios ou marcados como “a investigar”, “não avaliado” ou “não aferida” precisam ser confirmados.\n\nAVISO: simulação de roleplay. Não é prontuário clínico real e não substitui avaliação profissional.\n`;
 }
 function download(name,content,type){
  const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url);

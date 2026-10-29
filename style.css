@@ -62,3 +62,21 @@ textarea{min-height:84px;resize:vertical}
 @media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static}.step-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}.panel{min-height:0}.grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 @media(max-width:480px){.check-grid,.radio-list,.summary-grid{grid-template-columns:1fr}.panel-head{display:block}.counter{display:inline-block;margin-top:10px}.actions .btn{flex:1}}
 @media print{body{background:white}.sidebar,header,.notice,.actions,.footer-note{display:none!important}main{margin:0;max-width:none;padding:0}.layout{display:block}.panel{box-shadow:none;border:0;padding:0}.screen-only{display:none!important}}
+
+/* Ajuste solicitado: ocultar o campo Conduta inicial registrada, se houver markup antigo. */
+#conduta { display: none !important; }
+label[for="conduta"] { display: none !important; }
+
+/* Referências visuais de gravidade e especialidades — HP DE FORTUNA */
+.severity-reference,.specialty-reference{border:1px solid var(--line);border-radius:12px;padding:15px;margin:16px 0;background:#fff}
+.severity-reference h3,.specialty-reference h3{font-size:15px;color:var(--navy);margin:0 0 12px}
+.severity-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.severity-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px}
+.severity-dot{flex:0 0 19px;width:19px;height:19px;border-radius:50%;margin-top:1px;border:1px solid #0002}
+.grade-1{background:#d92d20}.grade-2{background:#e99a25}.grade-3{background:#f6d84a}.grade-4{background:#42b83b}.grade-5{background:#2463c7}
+.table-scroll{overflow-x:auto}
+.specialty-table{width:100%;border-collapse:collapse;font-size:12px}
+.specialty-table th,.specialty-table td{text-align:left;vertical-align:top;padding:8px 9px;border-bottom:1px solid var(--line)}
+.specialty-table th{background:var(--blue2);color:var(--navy);font-weight:800}
+.specialty-table tr:last-child td{border-bottom:0}
+@media(max-width:480px){.severity-reference,.specialty-reference{padding:11px}.specialty-table{min-width:300px}}
