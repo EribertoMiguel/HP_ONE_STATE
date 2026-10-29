@@ -20,7 +20,7 @@ const catalog = {
  "Saúde emocional e outros":["Ansiedade","Tristeza","Irritabilidade","Alteração do sono","Sangramento","Fadiga","Outros sintomas não listados","Nenhum sintoma adicional informado","Ainda não investigados"]
 };
 let page = 0;
-const selectedSymptoms = new Set(["Tontura"]);
+const selectedSymptoms = new Set();
 const $ = id => document.getElementById(id);
 function renderCatalog(){
  const host=$("symptomCatalog"); host.innerHTML="";
