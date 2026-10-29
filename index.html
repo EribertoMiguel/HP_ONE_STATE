@@ -70,7 +70,7 @@
               </select>
             </div>
             <div class="field">
-              <label for="profissional">Profissional do HP</label>
+              <label for="profissional">Profissional no RP</label>
               <input id="profissional" name="profissional">
             </div>
           </div>
@@ -248,14 +248,13 @@
 
             </textarea>
           </div>
-
+          <div class="actions screen-only" style="border-top:0;margin-top:8px;padding-top:0">
+            <button type="button" class="btn primary" id="goFinalBtn">Ir para a ficha final →</button>
+          </div>
         </section>
-
         <section class="page hidden" data-page="6">
           <div id="finalSummary"></div>
           <div class="actions screen-only" style="border-top:0;padding-top:10px">
-            <button type="button" class="btn primary" id="downloadTxt">Baixar ficha (.txt)</button>
-            <button type="button" class="btn secondary" id="downloadJson">Baixar dados (.json)</button>
             <button type="button" class="btn outline" onclick="window.print()">Imprimir / salvar PDF</button>
           </div>
         </section>

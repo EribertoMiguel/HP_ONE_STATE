@@ -114,12 +114,13 @@ $("nextBtn").addEventListener("click",()=>{
  page=Math.min(6,page+1);renderPage();
 });
 $("prevBtn").addEventListener("click",()=>{page=Math.max(0,page-1);renderPage();});
-$("downloadTxt").addEventListener("click",()=>{const d=getData();download("ficha_triagem_rp.txt",reportText(d),"text/plain;charset=utf-8");});
-$("downloadJson").addEventListener("click",()=>{const d=getData();download("ficha_triagem_rp.json",JSON.stringify(d,null,2),"application/json;charset=utf-8");});
-$("resetBtn").addEventListener("click",()=>{
- if(!confirm("Deseja apagar os dados e iniciar uma nova ficha em branco?"))return;
- $("triageForm").reset();selectedSymptoms.clear();document.querySelectorAll("#symptomCatalog input[type=checkbox]").forEach(c=>c.checked=false);
- page=0;renderPage();
-});
 $("now").textContent=new Date().toLocaleString("pt-BR");
 renderCatalog();renderPage();
+
+document.addEventListener("DOMContentLoaded", () => {
+ const goFinalBtn = document.getElementById("goFinalBtn");
+ if (goFinalBtn) goFinalBtn.addEventListener("click", () => {
+   page = 6;
+   renderPage();
+ });
+});
