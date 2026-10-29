@@ -224,8 +224,10 @@
         </section>
 
         <section class="page hidden" data-page="5">
-          <div class="field">
-            <label for="prioridade">Prioridade registrada no RP</label>
+          <section class="content-section priority-section">
+            <h3 class="section-heading">1. Prioridade de atendimento</h3>
+            <div class="field">
+            <label for="prioridade">Grau de gravidade registrado no RP</label>
             <select id="prioridade" name="prioridade">
               <option value="" selected>Selecione o grau de gravidade</option>
               <option>Grau 1 — Crítico</option>
@@ -235,6 +237,8 @@
               <option>Grau 5 — Mínimo</option>
             </select>
           </div>
+          </section>
+          <section class="content-section severity-section">
           <div class="severity-reference">
             <h3>Legenda de gravidade</h3>
             <ul class="severity-list">
@@ -245,6 +249,8 @@
               <li><span class="severity-dot grade-5"></span><span><strong>Grau 5 — Mínimo:</strong> não urgente, conforme protocolo local.</span></li>
             </ul>
           </div>
+          </section>
+          <section class="content-section specialties-section">
           <div class="specialty-reference">
             <h3>Lista de especialidades e gravidade</h3>
             <div class="table-scroll">
@@ -270,12 +276,16 @@
             </div>
             <p class="hint">Referência para simulação de RP; a gravidade real deve seguir avaliação profissional e protocolo aplicável.</p>
           </div>
+          </section>
+          <section class="content-section observations-section">
+          <h3 class="section-heading">4. Observações médicas</h3>
           <div class="field">
             <label for="observacoes">Observações médicas</label>
             <textarea id="observacoes" name="observacoes" placeholder="Registre a justificativa da conduta, sinais de alerta e pendências...">
 
             </textarea>
           </div>
+          </section>
           <div class="actions screen-only" style="border-top:0;margin-top:8px;padding-top:0">
             <button type="button" class="btn primary" id="goFinalBtn">Ir para a ficha final →</button>
           </div>

@@ -80,3 +80,32 @@ label[for="conduta"] { display: none !important; }
 .specialty-table th{background:var(--blue2);color:var(--navy);font-weight:800}
 .specialty-table tr:last-child td{border-bottom:0}
 @media(max-width:480px){.severity-reference,.specialty-reference{padding:11px}.specialty-table{min-width:300px}}
+
+/* Organização da etapa 6 em seções visuais independentes */
+.content-section{
+  display:block;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px;
+  margin:16px 0;
+  background:#fff;
+}
+.section-heading{
+  color:var(--navy);
+  font-size:15px;
+  line-height:1.35;
+  margin:0 0 13px;
+}
+.content-section .severity-reference,
+.content-section .specialty-reference{
+  border:0;
+  border-radius:0;
+  padding:0;
+  margin:0;
+  background:transparent;
+}
+.content-section .field:last-child{margin-bottom:0}
+.priority-section{border-left:4px solid var(--blue)}
+.severity-section{border-left:4px solid #e99a25}
+.specialties-section{border-left:4px solid #1769aa}
+.observations-section{border-left:4px solid #637586}
